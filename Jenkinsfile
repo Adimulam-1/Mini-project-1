@@ -8,25 +8,25 @@ pipeline {
 
           stage ('Build'){
             steps {
-                sh '/usr/bin/mvn clean compile'
+                sh 'mvn clean compile'
             }
           }
 
           stage ('Test'){
             steps {
-                sh '/usr/bin/mvn test'
+                sh 'mvn test'
             }
           }
 
           stage ('Package') {
             steps {
-                sh '/usr/bin/mvn clean package'
+                sh 'mvn clean package'
             }
           }
 
           stage ('SonarQube') {
             steps {
-                sh '/usr/bin/mvn sonar:sonar'
+                sh 'mvn sonar:sonar'
             }
           }
        }
