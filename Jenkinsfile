@@ -31,9 +31,10 @@ pipeline {
           }
           stage('SonarQube Analysis') {
            steps {
-              withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
+              withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
             sh '''
-                mvn clean verify sonar:sonar \
+                mvn sonar:sonar \
+                -Dsonar.host.url=http://http://15.207.71.237:9000 \
                 -Dsonar.token=$SONAR_TOKEN
             '''
         }
