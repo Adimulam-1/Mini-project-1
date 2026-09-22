@@ -23,12 +23,6 @@ pipeline {
                 sh 'mvn clean package'
             }
           }
-
-          stage ('SonarQube') {
-            steps {
-                sh 'mvn sonar:sonar'
-            }
-          }
           stage('SonarQube Analysis') {
            steps {
               withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
